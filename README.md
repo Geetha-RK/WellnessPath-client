@@ -84,7 +84,6 @@ Special considerations include ensuring data privacy and compliance with HIPAA h
 ![](Patients-Report.png)
 
 ### Data
-
 ![](DBSchema.png)
 
 ### Endpoints
