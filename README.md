@@ -466,3 +466,6 @@ Response
 **Claims Submission:** Submit and track insurance claims electronically.
 **Testing** Write unit tests for critical components and API endpoints.
 
+
+
+[def]: DBSchema.png
