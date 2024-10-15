@@ -33,7 +33,8 @@ Special considerations include ensuring data privacy and compliance with HIPAA h
 ### Tech Stack
 
 - React
-- TypeScript
+- JavaScript
+- Tailwind CSS
 - MySQL
 - Express
 - Client libraries: 
