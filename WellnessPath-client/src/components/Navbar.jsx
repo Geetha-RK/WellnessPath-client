@@ -9,23 +9,23 @@ const Navbar = () => {
     const [token,setToken] = useState(true);
 
   return (
-    <nav className='flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400'>
-        <img className='w-[250px] h-[60px] cursor-pointer' src={assets.logo} alt="" />
-        <ul className='hidden md:flex items-start gap-5 font-medium'>
+    <nav className='flex items-center justify-between bg-color1 text-sm py-4 px-8 lg:px-16 border-b border-b-gray-400'>
+        <img className='w-[200px] h-[60px] cursor-pointer rounded-lg' src={assets.logo} alt="" />
+        <ul className='hidden md:flex items-start gap-5 lg:gap-12 font-medium'>
             <NavLink to='/'>
-                <li className='py-1'>HOME</li>
+                <li className='py-1 text-base text-white'>HOME</li>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </NavLink>
             <NavLink to='/doctors'>
-                <li className='py-1'>FIND A DOCTOR</li>
+                <li className='py-1 text-base text-white'>FIND A DOCTOR</li>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </NavLink>
             <NavLink to='/about'>
-                <li className='py-1'>ABOUT</li>
+                <li className='py-1 text-base text-white'>ABOUT</li>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </NavLink>
             <NavLink to='/contact'>
-                <li className='py-1'>CONTACT</li>
+                <li className='py-1 text-base text-white'>CONTACT</li>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </NavLink>
         </ul>

@@ -11,6 +11,13 @@ import docteam2 from '../assets/docteam2.jpg'
 import logo from '../assets/logo-png.png'
 import profilepic from '../assets/profilepic.jpg'
 import dropdown from '../assets/dropdown_icon.svg'
+import groupprofiles from '../assets/group_profiles.png'
+import arrow_icon from '../assets/arrow_icon.svg'
+import hero from '../assets/hero.png'
+import docgroup from '../assets/doc-group.png'
+import doctornotes from '../assets/doctornotes.jpg'
+import abstract from '../assets/abstract.jpg'
+
 
 
 export const assets = {
@@ -26,5 +33,11 @@ export const assets = {
     docteam2,
     logo,
     profilepic,
-    dropdown
+    dropdown,
+    groupprofiles,
+    arrow_icon,
+    hero,
+    docgroup,
+    doctornotes,
+    abstract
 }

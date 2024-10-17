@@ -1,0 +1,25 @@
+.scrollContainer{
+    position: fixed; // Keep it fixed
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; // Cover the entire viewport
+    z-index: 0; // Ensure it's behind other content
+    overflow: hidden; // Hide any overflow
+}
+.homecontent {
+    position: relative;
+    z-index: 10; // Ensure it stays above the scrollContainer
+    padding: 2.5rem; // Adjust padding as needed
+
+  }
+.bg-parent{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // Maintain aspect ratio while covering
+      }
+}
