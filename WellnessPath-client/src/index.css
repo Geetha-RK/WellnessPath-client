@@ -9,3 +9,9 @@
 ::-webkit-scrollbar{
     @apply hidden;
 }
+
+.bg-main{ 
+ /* opacity: 1; */
+    background-color: rgb(39, 154, 169);
+}
+/* fixed  top-0 left-0 right-0 */

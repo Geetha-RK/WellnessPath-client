@@ -10,6 +10,7 @@ export default {
         'primary':'#412234',
         'color1':'#E489BE',
         'fontcolor':'#E11346'
+        
       }
     },
   },

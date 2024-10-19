@@ -23,6 +23,7 @@ import Pediatricians from '../assets/Pediatricians.svg'
 import Dermatologist from '../assets/Dermatologist.svg'
 import Gastroenterologist from '../assets/Gastroenterologist.svg'
 import Neurologist from '../assets/Neurologist.svg'
+import femalehero from '../assets/female-hero.png'
 
 
 export const assets = {
@@ -44,7 +45,8 @@ export const assets = {
     hero,
     docgroup,
     doctornotes,
-    abstract
+    abstract,
+    femalehero
 }
 
 export const specialityData = [

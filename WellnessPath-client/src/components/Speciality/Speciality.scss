@@ -7,18 +7,29 @@
     gap: 1rem;
     padding-top: 4rem;
     padding-bottom: 4rem;
-    color: gray;
+    color: black;
+
+    @include tablet{
+        padding-top: 8rem;
+    }
 
     &__heading{
-        font-size: 1.875rem /* 30px */;
-        line-height: 2.25rem /* 36px */;
-        font-weight:500;
+        @extend %f-body-medium;
+
+        @include tablet{
+
+        }
     }
     &__para{
-        font-size: 0.875rem; /* 14px */;
-    line-height: 1.25rem ;
-    text-align:center;
-    width: 33.333333%;
+        font-size: 1.5rem; 
+        line-height: 1.25rem ;
+        text-align:center;
+        width: 85%;
+
+        @include tablet{
+            width:30%;
+        }
+        
     
     }
     &__item{
