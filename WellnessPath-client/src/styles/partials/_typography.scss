@@ -40,7 +40,7 @@ textarea, input {
 // @extend these to set responsive font sizes and weight
 
 %f-page-header {
-	@include -font-responsive(600, 28px, 36px, 32px, 40px);
+	@include -font-responsive(600, 30px, 36px, 84px, 100px);
 }
 %f-sub-header {
 	@include -font-responsive(600, 20px, 28px, 24px, 32px);
@@ -67,5 +67,5 @@ textarea, input {
 	@extend %f-label;
 }
 %f-button {
-	@extend %f-label;
+	@include -font-responsive(600, 16px, 20px, 20px, 22px);
 }

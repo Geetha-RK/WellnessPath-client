@@ -1,6 +1,8 @@
 import React from 'react'
 import Header from '../../components/Header'
 import { assets } from '../../components/assets'
+import './Home.scss'
+import Speciality from '../../components/Speciality/Speciality'
 
 const Home = () => {
   return (
@@ -9,13 +11,19 @@ const Home = () => {
       <div className='bg-parent'>
                 <img src={assets.abstract} alt="" />
             </div>
-            <main className='homecontent'>
-                <section className=''>
-                   <p>Leading the way to <br /> better medicine</p>
+            <div className='homecontent'>
+                <section >
+                   <p className='homecontent__para'>Leading the way to <br /> better medicine</p>
+                   <p className='homecontent__para-tag'>Your health journey made easy with seamless appointment scheduling</p>
+                   <a href="#speciality">
+                      <button className='homecontent__button'>Book an Appointment</button>
+                   </a>
+                   
                </section>
-            </main>
+              <Speciality />
             </div>
-        <Header />
+            </div>
+        
     </div>
   )
 }

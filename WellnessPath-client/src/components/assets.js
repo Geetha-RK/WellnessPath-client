@@ -17,7 +17,12 @@ import hero from '../assets/hero.png'
 import docgroup from '../assets/doc-group.png'
 import doctornotes from '../assets/doctornotes.jpg'
 import abstract from '../assets/abstract.jpg'
-
+import General_physician from '../assets/General_physician.svg'
+import Gynecologist from '../assets/Gynecologist.svg'
+import Pediatricians from '../assets/Pediatricians.svg'
+import Dermatologist from '../assets/Dermatologist.svg'
+import Gastroenterologist from '../assets/Gastroenterologist.svg'
+import Neurologist from '../assets/Neurologist.svg'
 
 
 export const assets = {
@@ -41,3 +46,30 @@ export const assets = {
     doctornotes,
     abstract
 }
+
+export const specialityData = [
+    {
+        speciality: 'General Physician',
+        image:General_physician
+    },
+    {
+        speciality: 'Gynecologist',
+        image: Gynecologist
+    },
+    {
+        speciality: 'Pediatricians',
+        image:Pediatricians
+    },
+    {
+        speciality: 'Dermatologist',
+        image:Dermatologist
+    },
+    {
+        speciality: 'Gastroenterologist',
+        image:Gastroenterologist
+    },
+    {
+        speciality: 'Neurologist',
+        image:Neurologist
+    },
+]
