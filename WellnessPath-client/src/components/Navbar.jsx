@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { assets } from './assets'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom';
+// import Avatar from '@mui/material/Avatar';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -9,8 +10,9 @@ const Navbar = () => {
     const [token,setToken] = useState(true);
 
   return (
-    <nav className='flex items-center justify-between bg-blue-600 text-sm py-4 px-8 lg:px-16 fixed z-10 top-0 left-0 right-0'>
+    <nav className='flex items-center justify-between bg-main text-sm py-4 px-8 lg:px-16 z-10'> 
         <img className='w-[250px] h-[60px] cursor-pointer rounded-lg' src={assets.logo} alt="" />
+        {/* <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" /> */}
         <ul className='hidden md:flex items-start gap-5 lg:gap-12 font-medium'>
             <NavLink to='/'>
                 <li className='py-1 text-base text-white hover:text-primary'>HOME</li>

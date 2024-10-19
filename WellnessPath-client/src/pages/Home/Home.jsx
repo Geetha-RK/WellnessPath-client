@@ -9,8 +9,9 @@ const Home = () => {
     <div>
       <div className='scrollContainer'>
       <div className='bg-parent'>
-                <img src={assets.abstract} alt="" />
+                {/* <img src={assets.abstract} alt="" /> */}
             </div>
+            
             <div className='homecontent'>
                 <section >
                    <p className='homecontent__para'>Leading the way to <br /> better medicine</p>
@@ -19,6 +20,9 @@ const Home = () => {
                       <button className='homecontent__button'>Book an Appointment</button>
                    </a>
                    
+               </section>
+               <section className='homecontent__img'>
+                <img src="femalehero" alt="" />
                </section>
               <Speciality />
             </div>
