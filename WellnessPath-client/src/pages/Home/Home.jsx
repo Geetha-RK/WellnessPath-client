@@ -3,6 +3,7 @@ import Header from '../../components/Header'
 import { assets } from '../../components/assets'
 import './Home.scss'
 import Speciality from '../../components/Speciality/Speciality'
+import TopDoctors from '../../components/TopDoctors/TopDoctors'
 
 const Home = () => {
   return (
@@ -21,10 +22,11 @@ const Home = () => {
                    </a>
                    
                </section>
-               <section className='homecontent__img'>
-                <img src="femalehero" alt="" />
-               </section>
+               {/* <section className='homecontent__img'>
+                <img src="assets.femalehero" alt="" />
+               </section> */}
               <Speciality />
+              <TopDoctors />
             </div>
             </div>
         

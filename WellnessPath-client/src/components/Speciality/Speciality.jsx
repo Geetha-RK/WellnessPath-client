@@ -2,6 +2,7 @@ import React from 'react'
 import { specialityData } from '../assets'
 import { Link } from 'react-router-dom'
 import './Speciality.scss'
+
 const Speciality = () => {
   return (
     <div id='speciality' className='speciality '>
@@ -9,7 +10,7 @@ const Speciality = () => {
       {/* <p className='speciality__para'>"Unlock access to expert medical professionals across specialties, guiding you towards the best care for your individual health needs</p> */}
       <div className='speciality__item'>
         {specialityData.map((item,index)=>
-          <Link key={index} to={`/doctor/${item.speciality}`}>
+          <Link onClick={()=>scrollTo(0,0)} className='speciality__link' key={index} to={`/doctor/${item.speciality}`}>
               <img className='speciality__img' src={item.image} alt={`${item.speciality} image`} />
               <p>{item.speciality}</p>
           </Link>
