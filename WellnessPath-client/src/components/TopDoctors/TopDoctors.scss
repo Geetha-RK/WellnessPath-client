@@ -1,55 +1,84 @@
+@use "../../styles/partials/globals" as *;
 .topdoctors{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem; 
     margin: 4rem 0; 
-  
-    color: #1f2937; 
+    // width:fit-content;
+    // color: #1f2937; 
    @include tablet {
+    // flex-direction: row;
+    // flex-wrap: wrap;
       margin-left: 2.5rem; 
       margin-right: 2.5rem;
+    }
+    @include desktop{
+      justify-content:space-evenly;
     }
     &__heading{
         font-size: 1.875rem; 
         font-weight: 500;   
         }
-    }
+    &__navigation {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      overflow: hidden; // Prevent overflow of arrows
+      position: relative;
+
+      &__arrow {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 2rem;
+          z-index: 10; // Keep arrows above content
+      }
+  }
     &__container{
         width: 100%; 
-  
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(0, 1fr)); 
-
+        overflow-x: auto; 
+        // width: 100%; 
+        display: flex; 
+        flex-wrap: nowrap; // Allow items to wrap onto the next line
         gap: 1rem; 
-        padding-top: 1.25rem; 
-        gap-y: 1.5rem; 
-        
-        padding-left: 0.75rem; 
-        padding-right: 0.75rem;
+        padding: 1.25rem 0.75rem; 
 
         @include tablet { 
             padding-left: 0; 
             padding-right: 0;
         }
-        &__box{
-            border: 1px solid #bfdbfe; // Tailwind's border-blue-200
-            border-radius: 0.75rem;     // Tailwind's rounded-xl
-            overflow: hidden;            // Tailwind's overflow-hidden
-            cursor: pointer;             // Tailwind's cursor-pointer
-            transition: all 0.5s;       // Tailwind's transition-all duration-500
-            
-            &:hover {
-              transform: translateY(-10px); // Tailwind's hover:translate-y-[-10px]
-            }
-          }
-          &__doctorimg{
-            background-color: #f0f9ff; // Tailwind's bg-blue-50 translates to a very light blue color
-            width: 100px;  // Set width to 100px
-            height: 100px; // Set height to 100px
 
+        
+        }
+        &__box{
+          // border: 1px solid #bfdbfe; 
+          border-radius: 0.75rem;     
+          overflow: hidden;            
+          cursor: pointer;             
+          transition: all 0.5s;       
+          flex: 0 0 auto; 
+
+          &:hover {
+            transform: translateY(-10px); 
           }
         }
-        
+          &__doctorimg{
+            background-color: #f0f9ff; 
+            width: 200px; 
+            height: 200px;
+            border-radius: 10px;
+
+            @include tablet{
+              width:200px;
+              height:300px;
+            }
+            @include desktop{
+              width:300px;
+              height:300px;
+            }
+          }
+        }
+      
     
   

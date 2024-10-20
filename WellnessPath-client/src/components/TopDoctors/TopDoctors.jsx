@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-
+import './TopDoctors.scss'
 const TopDoctors = () => {
     const [doctors, setDoctors] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -21,13 +21,36 @@ const TopDoctors = () => {
         }
         doctorList();
     },[]);
+
+    function scrollLeft() {
+        const container = document.querySelector('.topdoctors__container');
+        container.scrollBy({
+            top: 0,
+            left: -300, // Adjust the value to control scroll distance
+            behavior: 'smooth'
+        });
+    }
+    
+    function scrollRight() {
+        const container = document.querySelector('.topdoctors__container');
+        container.scrollBy({
+            top: 0,
+            left: 300, // Adjust the value to control scroll distance
+            behavior: 'smooth'
+        });
+    }
+
+    if (loading) return <div>Loading...</div>; // Loading state
+    if (error) return <div>Error: {error}</div>; //error state
   return (
     <div className='topdoctors'>
         <h2 className='topdoctors__heading'>Top Doctors</h2>
+        <div className='topdoctors__navigation'>
+        <button class="topdoctors__arrow left" onclick="scrollLeft()">&#9664;</button>
         <div className='topdoctors__container'>
             {doctors.slice(0,10).map((item,index)=>(
                 <div className='topdoctors__box' key={index}>
-                    <img className='topdoctos__doctorimg' src={item.image} alt="doc-image" />
+                    <img className='topdoctors__doctorimg' src={item.image} alt="doc-image" />
                     <div>
                         <div>
                         <p></p><p>Available</p>
@@ -39,6 +62,9 @@ const TopDoctors = () => {
                 </div>
 
             ))}
+        
+        </div>
+        <button class="topdoctors__arrow right" onclick="scrollRight()">&#9654;</button>
         </div>
     </div>
   )

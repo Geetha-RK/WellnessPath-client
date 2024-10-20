@@ -2,6 +2,7 @@ import React from 'react'
 import { specialityData } from '../assets'
 import { Link } from 'react-router-dom'
 import './Speciality.scss'
+
 const Speciality = () => {
   return (
     <div id='speciality' className='speciality '>
