@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem; 
-    margin: 4rem 0; 
+    // margin: 4rem 0; 
     // width:fit-content;
     // color: #1f2937; 
    @include tablet {
@@ -18,7 +18,9 @@
     }
     &__heading{
         font-size: 1.875rem; 
-        font-weight: 500;   
+        font-weight: 500; 
+        color:rgb(39, 154, 169);
+        // color:white;
         }
     &__navigation {
       display: flex;
@@ -67,16 +69,16 @@
           &__doctorimg{
             background-color: #f0f9ff; 
             width: 200px; 
-            height: 200px;
+            height: 400px;
             border-radius: 10px;
 
             @include tablet{
-              width:200px;
-              height:300px;
+              width:300px;
+              height:400px;
             }
             @include desktop{
               width:300px;
-              height:300px;
+              height:400px;
             }
           }
           &__container2{

@@ -54,7 +54,7 @@ textarea, input {
 	@include -font-responsive(400, 15px, 26px, 16px, 28px);
 }
 %f-body-medium {
-	@include -font-responsive(400, 30px, 20px, 40px, 22px); //Find doctor by speciality
+	@include -font-responsive(400, 30px, 36px, 30px, 45px); //Find doctor by speciality
 }
 %f-body-small {
 	@include -font-responsive(400, 11px, 16px, 12px, 18px);
