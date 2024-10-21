@@ -7,7 +7,9 @@
     gap: 1rem;
     padding-top: 4rem;
     padding-bottom: 4rem;
-    color: black;
+    // color: black;
+    color: rgb(39, 154, 169);
+    // color:white;
 
     @include tablet{
         padding-top: 8rem;
@@ -15,7 +17,7 @@
 
     &__heading{
         @extend %f-body-medium;
-
+        text-align: center;
         @include tablet{
 
         }

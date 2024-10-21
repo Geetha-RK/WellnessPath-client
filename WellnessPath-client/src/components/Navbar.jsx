@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 import { assets } from './assets'
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate,useLocation } from 'react-router-dom';
 // import Avatar from '@mui/material/Avatar';
 
 const Navbar = () => {
     const navigate = useNavigate();
-
+    const location = useLocation();
     const [showMenu, setShowMenu] = useState(false);
     const [token,setToken] = useState(true);
 
+    const getNavbarBgColor = () => {
+        if (location.pathname === '/') {
+            return 'bg-main'; // Default background for home
+        } else {
+            return 'bg-purple'; // Change this to your desired color class
+        }
+    };  
+
   return (
-    <nav className='flex items-center justify-between bg-main text-sm py-4 px-8 lg:px-16 z-10'> 
-        <img className='w-[250px] h-[60px] cursor-pointer rounded-lg' src={assets.logo} alt="" />
+    <nav className={`flex items-center justify-between text-sm py-4 px-8 lg:px-16 z-10 relative ${getNavbarBgColor()}`}> 
+        <img onClick={()=> navigate('/')} className='w-[250px] h-[60px] cursor-pointer rounded-lg' src={assets.logo} alt="" />
         {/* <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" /> */}
         <ul className='hidden md:flex items-start gap-5 lg:gap-12 font-medium'>
             <NavLink to='/'>
