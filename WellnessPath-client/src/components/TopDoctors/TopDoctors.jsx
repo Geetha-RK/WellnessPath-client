@@ -1,32 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
-import './TopDoctors.scss'
-const TopDoctors = () => {
-    const [doctors, setDoctors] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+import React, { useContext } from 'react';
+import './TopDoctors.scss';
+import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../../context/AppContext';
 
-    useEffect(()=>{
-        const doctorList = async () => {
-            setLoading(true); 
-            try{
-                const response = await axios.get('http://localhost:8080/api/doctors');
-                setDoctors(response.data);
-                console.log(response.data);
-            }catch(error){
-                setError(error.response ? error.response.data.message : error.message);
-            } finally {
-                setLoading(false); 
-              }
-        }
-        doctorList();
-    },[]);
+const TopDoctors = () => {
+    const navigate = useNavigate();
+
+    const { doctors, loading, error } = useContext(AppContext);
+
+    if (loading) {
+        return <div>Loading...</div>; 
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>; 
+    }
 
     function scrollLeft() {
         const container = document.querySelector('.topdoctors__container');
         container.scrollBy({
             top: 0,
-            left: -300, // Adjust the value to control scroll distance
+            left: -300, 
             behavior: 'smooth'
         });
     }
@@ -35,36 +29,34 @@ const TopDoctors = () => {
         const container = document.querySelector('.topdoctors__container');
         container.scrollBy({
             top: 0,
-            left: 300, // Adjust the value to control scroll distance
+            left: 300, 
             behavior: 'smooth'
         });
     }
 
-    if (loading) return <div>Loading...</div>; // Loading state
-    if (error) return <div>Error: {error}</div>; //error state
+   
   return (
     <div className='topdoctors'>
         <h2 className='topdoctors__heading'>Top Doctors</h2>
         <div className='topdoctors__navigation'>
-        <button class="topdoctors__arrow left" onclick="scrollLeft()">&#9664;</button>
+        <button class="topdoctors__arrow left" onClick="scrollLeft()">&#9664;</button>
         <div className='topdoctors__container'>
             {doctors.slice(0,10).map((item,index)=>(
-                <div className='topdoctors__box' key={index}>
+                <div onClick={()=>navigate(`/appointments/${item.doctor_id}`)} className='topdoctors__box' key={index}>
                     <img className='topdoctors__doctorimg' src={item.image} alt="doc-image" />
-                    <div>
-                        <div>
-                        <p></p><p>Available</p>
+                    <div className='topdoctors__container2'>
+                        <div className='topdoctors__text'>
+                            <p className='topdoctors__greenbox'></p><p>Available</p>
                         </div>
-                         <p>{`Dr. ${item.first_name} ${item.last_name}`}</p>
-
+                        <p className='topdoctors__name '>{`Dr. ${item.first_name} ${item.last_name}`}</p>
+                        <p className='topdoctors__speciality'>{item.specialization}</p>
                     </div>
-                    <p>{item.specialization}</p>
                 </div>
 
             ))}
         
         </div>
-        <button class="topdoctors__arrow right" onclick="scrollRight()">&#9654;</button>
+        <button class="topdoctors__arrow right" onClick="scrollRight()">&#9654;</button>
         </div>
     </div>
   )
