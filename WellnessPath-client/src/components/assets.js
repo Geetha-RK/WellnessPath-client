@@ -1,11 +1,4 @@
-import doc1 from '../assets/doc1.jpg'
-import doc2 from '../assets/doc2.jpg'
-import doc3 from '../assets/doc3.jpg'
-import doc4 from '../assets/doc4.jpg'
-import doc5 from '../assets/doc5.jpg'
-import doc6 from '../assets/doc6.jpg'
-import doc7 from '../assets/doc7.jpg'
-import doc8 from '../assets/doc8.jpg'
+
 import docteam from '../assets/docteam.jpg'
 import docteam2 from '../assets/docteam2.jpg'
 import logo from '../assets/logo-png.png'
@@ -24,17 +17,10 @@ import Dermatologist from '../assets/Dermatologist.svg'
 import Gastroenterologist from '../assets/Gastroenterologist.svg'
 import Neurologist from '../assets/Neurologist.svg'
 import femalehero from '../assets/female-hero.png'
-
+import verifiedicon from '../assets/verified_icon.svg'
+import info_icon from '../assets/info_icon.svg'
 
 export const assets = {
-    doc1,
-    doc2,
-    doc3,
-    doc4,
-    doc5,
-    doc6,
-    doc7,
-    doc8,
     docteam,
     docteam2,
     logo,
@@ -46,7 +32,9 @@ export const assets = {
     docgroup,
     doctornotes,
     abstract,
-    femalehero
+    femalehero,
+    verifiedicon,
+    info_icon
 }
 
 export const specialityData = [

@@ -7,6 +7,7 @@ const AppContextProvider = (props) => {
     const [doctors, setDoctors] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedDoctor, setSelectedDoctor] = useState(null);
 
     useEffect(()=>{
         const doctorList = async () => {
@@ -23,9 +24,21 @@ const AppContextProvider = (props) => {
         doctorList();
     },[]);
 
+    const getDoctorById = async (id) => {
+        setLoading(true);
+        try {
+            const response = await axios.get(`http://localhost:8080/api/doctors/${id}`);
+            setSelectedDoctor(response.data);
+        } catch (error) {
+            setError(error.response ? error.response.data.message : error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
 
-        <AppContext.Provider value={{ doctors,loading,error }}>
+        <AppContext.Provider value={{ doctors,loading,error,selectedDoctor, getDoctorById  }}>
             {props.children}
         </AppContext.Provider>
     )
