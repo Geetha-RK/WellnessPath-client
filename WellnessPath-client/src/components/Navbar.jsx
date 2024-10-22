@@ -12,6 +12,8 @@ const Navbar = () => {
     const getNavbarBgColor = () => {
         if (location.pathname === '/') {
             return 'bg-main'; // Default background for home
+        } else if(location.pathname.startsWith('/appointments')){
+            return 'bg-green';
         } else {
             return 'bg-purple'; // Change this to your desired color class
         }
@@ -23,19 +25,19 @@ const Navbar = () => {
         {/* <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" /> */}
         <ul className='hidden md:flex items-start gap-5 lg:gap-12 font-medium'>
             <NavLink to='/'>
-                <li className='py-1 text-base text-white hover:text-primary'>HOME</li>
+                <li className='py-1 text-base text-white hover:text-primary'>Home</li>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </NavLink>
             <NavLink to='/doctors'>
-                <li className='py-1 text-base text-white hover:text-primary'>FIND A DOCTOR</li>
+                <li className='py-1 text-base text-white hover:text-primary'>Find Doctors</li>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </NavLink>
             <NavLink to='/about'>
-                <li className='py-1 text-base text-white hover:text-primary'>ABOUT</li>
+                <li className='py-1 text-base text-white hover:text-primary'>About</li>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </NavLink>
             <NavLink to='/contact'>
-                <li className='py-1 text-base text-white hover:text-primary'>CONTACT</li>
+                <li className='py-1 text-base text-white hover:text-primary'>Contact</li>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </NavLink>
         </ul>

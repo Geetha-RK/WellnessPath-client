@@ -57,7 +57,10 @@ textarea, input {
 	@include -font-responsive(400, 30px, 36px, 30px, 45px); //Find doctor by speciality
 }
 %f-body-small {
-	@include -font-responsive(400, 11px, 16px, 12px, 18px);
+	@include -font-responsive(400, 16px, 16px, 24px, 18px); //book your appointment
+}
+%f-about-details {
+	@include -font-responsive(400, 16px, 16px, 18px, 18px); //about
 }
 
 %f-label {
