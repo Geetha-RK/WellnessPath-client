@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AppContext } from '../../context/AppContext';
 import { assets } from '../../components/assets';
@@ -8,6 +8,10 @@ const Appointment = () => {
   const {docId} = useParams();
   const { getDoctorById, selectedDoctor, loading, error } = useContext(AppContext);
 
+  const [docSlots,setDocSlots] = useState([]);
+  const [slotIndex,setSlotIndex] = useState(0);
+  const [slotTime,setSlotTime] = useState('');
+
   useEffect(()=>{
     if(docId){
       getDoctorById(docId);
@@ -16,6 +20,19 @@ const Appointment = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+
+  const getAvailableSlots = async() =>{
+    setDocSlots([]);
+    //getting ucrrent date
+    let today = new Date()
+    for(let i = 0;i<7;i++){
+      let currentDate = new Date(today);
+      currentDate.set
+    }
+  }
+  useEffect(()=>{
+    getAvailableSlots();
+  },[docInfo]);
 
   return (
     <>
