@@ -29,6 +29,7 @@ const AppContextProvider = (props) => {
         try {
             const response = await axios.get(`http://localhost:8080/api/doctors/${id}`);
             setSelectedDoctor(response.data);
+            console.log(response.data, "here")
         } catch (error) {
             setError(error.response ? error.response.data.message : error.message);
         } finally {
