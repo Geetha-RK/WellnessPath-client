@@ -7,9 +7,9 @@ import './Appointment.scss';
 const Appointment = () => {
   const { docId } = useParams();
   const { getDoctorById, selectedDoctor, loading, error } = useContext(AppContext);
-
+  const daysOfWeek = ['SUN','MON','TUE','WED','THU','FRI','SAT']
   const [docSlots, setDocSlots] = useState([]);
-
+   const [selectedDate, setSelectedDate] = useState(null); 
 
   useEffect(() => {
     const fetchDoctor = async () => {
@@ -23,45 +23,36 @@ const Appointment = () => {
 
   useEffect(() => {
     if(selectedDoctor){
-      getAvailableSlots();
+      setDocSlots(generateWeeklySlots());
     }
   }, [selectedDoctor]);
+ 
 
-  const getAvailableSlots = () => {
-    setDocSlots([]); // Clear previous slots
-    let today = new Date();
-    const newSlots = []; // Local array to hold the slots
-
+  const generateWeeklySlots = () => {
+    const slots = [];
+    const startHour = 10; // 10:00 AM
+    const endHour = 21; // 8:00 PM
+  
     for (let i = 0; i < 14; i++) {
-      let currentDate = new Date(today);
-      currentDate.setDate(today.getDate() + i);
-
-      let endTime = new Date();
-      endTime.setDate(today.getDate() + 1);
-      endTime.setHours(21, 0, 0, 0);
-
-      if (today.getDate() === currentDate.getDate()) {
-        currentDate.setHours(currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10);
-        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
-      } else {
-        currentDate.setHours(10);
-        currentDate.setMinutes(0);
-      }
-
-      while (currentDate < endTime) {
-        let formattedTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        newSlots.push({
+      const currentDaySlots = [];
+      const currentDate = new Date();
+      currentDate.setDate(currentDate.getDate() + i);
+      currentDate.setHours(startHour, 0, 0, 0);
+  
+      while (currentDate.getHours() < endHour) {
+        const formattedTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        currentDaySlots.push({
           datetime: new Date(currentDate),
           time: formattedTime,
         });
         currentDate.setMinutes(currentDate.getMinutes() + 30);
       }
+  
+      slots.push(currentDaySlots);
     }
-
-    // Update state once at the end
-    setDocSlots(newSlots);
+  
+    return slots;
   };
-
   
   useEffect(()=>{
     console.log(docSlots);
@@ -70,7 +61,14 @@ const Appointment = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!selectedDoctor) return <p>No doctor found.</p>;
-  
+
+  const handleDateSelect = (index) => {
+    setSelectedDate(index);
+  };
+
+  // Get the selected day's slots
+  const selectedDaySlots = selectedDate !== null ? docSlots[selectedDate] : [];
+
   return (
     <>
       <div className='bg-image3'></div>
@@ -97,6 +95,69 @@ const Appointment = () => {
           </div>
         </div>
       </div>
+
+      <div className='availability'>
+        <p className='availability__title'>Available Slots:</p>
+        <div className='availability__booking-wrapper'>
+        <div className='availability__booking-date'>
+          {docSlots.length > 0 ? (
+            docSlots.map((daySlots, index) => {
+              const currentDate = daySlots[0].datetime;
+              return (
+                <div key={index} className='availability__slot'onClick={() => handleDateSelect(index)}>
+                  <p>{daysOfWeek[currentDate.getDay()]}  </p>
+                  <p>{currentDate.getDate()}</p>
+                  
+                </div>
+                
+              );
+            })
+          ) : (
+            <p>No available time slots.</p>
+          )}
+        </div>
+        </div>
+
+
+        {selectedDate !== null && (
+    <>
+      {/* <p className='availability__title'>
+        Available Slots for {daysOfWeek[docSlots[selectedDate][0].datetime.getDay()]} {docSlots[selectedDate][0].datetime.getDate()}:
+      </p> */}
+      <div className='availability__booking-wrapper'>
+        <div className='availability__booking-date'>
+          {selectedDaySlots.length > 0 ? (
+            selectedDaySlots.map((slot, slotIndex) => (
+              <div key={slotIndex} className='availability__slot'>
+                <p>{slot.time}</p>
+              </div>
+            ))
+          ) : (
+            <p>No available time slots for this date.</p>
+          )}
+        </div>
+      </div>
+    </>
+  )}
+      </div>
+
+      {/* {selectedDate !== null && (
+        <div className='selected-slots'>
+          <h3>Available Slots for {daysOfWeek[docSlots[selectedDate][0].datetime.getDay()]} {docSlots[selectedDate][0].datetime.getDate()}:</h3>
+          <div className='seleted-slots__box'>
+            {selectedDaySlots.length > 0 ? (
+              selectedDaySlots.map((slot, slotIndex) => (
+                <p className='selected-slots__time' key={slotIndex}>{slot.time}</p>
+              ))
+            ) : (
+              <p>No available time slots for this date.</p>
+            )}
+          </div>
+        </div>
+      )} */}
+
+     
+            
     </>
   );
 }

@@ -46,6 +46,7 @@
         }
     }
     &__details-container{
+        opacity: 80%;
         padding: 0.5rem;
         margin: 1rem;
         background-color: #bb53a4c9;
@@ -64,7 +65,7 @@
            
         }
         @include desktop{
-            width:40rem;
+            width:80%;
             padding: 2rem;
         }
     }
@@ -102,4 +103,86 @@
     }
 
     
+}
+.availability{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__title{
+        margin:2rem;
+        font-weight: 600;
+        color: #370342c9;
+        
+        @include desktop{
+            margin: 32px;
+            margin-left: 108px;
+            padding-left: 1rem;
+        }
+    }
+
+    &__booking-wrapper{
+        display: flex;
+        justify-content: center;
+        overflow: auto;
+            @include tablet{
+                width:70%;
+                margin:0 5rem;
+            }
+    }
+    &__booking-date{
+        display: flex;
+        align-items: unset;
+        justify-content: unset;
+        flex-direction: row;
+        gap:6px;
+        transition: all .4s linear;
+        transform: translateX(0%);
+        width:80%;
+        margin-bottom:3rem;
+    }
+   
+
+    &__slot{
+        // @extend %f-body-small;
+        opacity: 80%;
+        background-color: rgba(187, 83, 164, 0.7882352941);
+        color: rgba(55, 3, 66, 0.7882352941);
+        font-weight: 600;
+        border:1px solid rgba(55, 3, 66, 0.7882352941);
+        padding: 8px 12px;
+        flex-grow: 1;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+        border-radius: 8px;
+        width:3rem;
+        // @include tablet{
+        //     width:calc(16.666% - 3px);
+        // }
+    }
+
+}
+.selected-slots{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 8px;
+        min-height: 44px;
+        overflow: auto hidden;
+
+        &__time{
+            background: #ddf1f8;
+            color: #106c89;
+            border: 1px solid #106c89;
+        }
+
+        &__box{
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
 }
