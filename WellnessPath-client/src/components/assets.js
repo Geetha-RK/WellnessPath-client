@@ -19,6 +19,7 @@ import Neurologist from '../assets/Neurologist.svg'
 import femalehero from '../assets/female-hero.png'
 import verifiedicon from '../assets/verified_icon.svg'
 import info_icon from '../assets/info_icon.svg'
+import menu_icon from "../assets/menu_icon.svg"
 
 export const assets = {
     docteam,
@@ -34,7 +35,8 @@ export const assets = {
     abstract,
     femalehero,
     verifiedicon,
-    info_icon
+    info_icon,
+    menu_icon
 }
 
 export const specialityData = [
