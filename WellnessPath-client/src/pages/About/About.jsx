@@ -3,6 +3,8 @@ import { assets } from '../../components/assets.js';
 import './About.scss'
 const About = () => {
   return (
+    <>
+    <div className="bg-image6"></div>
     <div className='about'>
       <div className='about__title'>
         <p>About Us</p>
@@ -45,6 +47,7 @@ const About = () => {
                     </div>
       </div>
     </div>
+    </>
   )
 }
 

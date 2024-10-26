@@ -56,8 +56,8 @@ const Navbar = () => {
                     <div className='flex items-center gap-2 cursor-pointer group relative'>
                         <img className="w-8 h-8 rounded-full object-cover" src={assets.profilepic} alt="User" />
                         <img className="w-2.5" src={assets.dropdown} alt="Dropdown Icon" />
-                        <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
-                            <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
+                        <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-100 hidden group-hover:block'>
+                        <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
                                 <p onClick={() => navigate('my-profile')} className='hover:text-black cursor-pointer'>My Profile</p>
                                 <p onClick={() => navigate('my-appointments')} className='hover:text-black cursor-pointer'>My Appointments</p>
                                 <p onClick={() => setToken(false)} className='hover:text-black cursor-pointer'>Logout</p>
@@ -69,9 +69,8 @@ const Navbar = () => {
                 )}
             </div>
 
-         
             {showMenu && (
-                <div className={`fixed w-full h-full top-0 right-0 z-20 bg-stone-100 overflow-hidden md:hidden transition-all ${getNavbarBgColor()}`}>
+                <div className={`fixed w-full h-full top-0 right-0 z-50 bg-stone-100 md:hidden transition-all ${getNavbarBgColor()}`}>
                     <div className='flex justify-between items-center p-4'>
                         <img onClick={() => setShowMenu(false)} className='w-6 cursor-pointer' src={assets.cross_icon} alt="Close Icon" />
                     </div>
@@ -91,7 +90,6 @@ const Navbar = () => {
                     </ul>
                 </div>
             )}
-          
         </nav>
     );
 };

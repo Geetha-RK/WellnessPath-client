@@ -11,6 +11,7 @@ import hero from '../assets/hero.png'
 import docgroup from '../assets/doc-group.png'
 import doctornotes from '../assets/doctornotes.jpg'
 import abstract from '../assets/abstract.jpg'
+import abstract2 from '../assets/abstract2.jpg'
 import General_physician from '../assets/General_physician.svg'
 import Gynecologist from '../assets/Gynecologist.svg'
 import Pediatricians from '../assets/Pediatricians.svg'
@@ -40,7 +41,8 @@ export const assets = {
     info_icon,
     menu_icon,
     logo_mobile,
-    cross_icon
+    cross_icon,
+    abstract2
 }
 
 export const specialityData = [
