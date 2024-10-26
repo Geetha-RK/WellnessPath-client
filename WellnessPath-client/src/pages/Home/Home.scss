@@ -14,13 +14,14 @@
 .homecontent {
   // background-attachment: scroll;
     position: relative;
-    top:88px;
+    top:150px;
     padding-top: 2rem;
     z-index: 10; 
     padding-left: 2rem; 
     padding-right: 2rem; 
     display: flex;
     flex-direction: column; 
+    align-items: center;
     overflow-y: auto; 
     max-height: calc(100vh - 2px); 
     scrollbar-width: none; 
@@ -44,31 +45,42 @@
       // color:black;
       // color: rgb(39, 154, 169);
       color:white;
+
+      @include tablet{
+        margin-bottom:2rem;
+      }
+      @include desktop{
+        margin-bottom:2rem;
+      }
     }
     &__para-tag{
       @extend %f-body-large;
-      // color:rgb(14, 13, 13);
-      color: rgb(39, 154, 169);
+      text-wrap: wrap;
+      color:white;
+      // color: rgb(39, 154, 169);
     }
     &__button{
       @extend %f-button;
       // padding: 15px 0;
       margin-top:25px;
       width:15rem;
-      height:60px;
-
+      height:60px;     
       
       text-transform: capitalize;
       border-radius:30px;
-      border:5px solid  rgb(39, 154, 169); 
+      // border:5px solid  rgb(39, 154, 169); 
       color: rgb(39, 154, 169);
       
-      background:transparent;
+      background:white;
       box-shadow: inset 0 0 0 0 rgb(39, 154, 169);
       cursor: pointer;
       transition: ease 1s;
       outline: none;
-
+      @include desktop{
+        margin:5rem 20rem;
+        width:15rem;
+        height:40px; 
+      }
       &:hover{
         box-shadow: inset 28rem 0 0 0 rgb(39, 154, 169);
         cursor: pointer;
@@ -81,7 +93,7 @@
     width: 100%;
     height: 100%;
     position:fixed;
-    opacity:50%;
+    // opacity:50%;
     background-image: url("../../assets/abstract.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed; 
@@ -95,7 +107,7 @@
       right: 0;
       bottom: 0;
       // background-color: rgba(39, 154, 169, 0.5); // Overlay color with opacity
-      background-color: rgba(20, 217, 243, 0.442);
+      // background-color: rgba(20, 217, 243, 0.442);
       z-index: 1; // Ensure it's on top of the background
       }
     // img {

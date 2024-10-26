@@ -16,4 +16,16 @@ body {
 	container-type: inline-size;
 	margin: 0;
 	padding: 0;
+	overflow-x: hidden;
+}
+
+
+nav {
+    position: relative;
+}
+
+.my-appointments {
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden; 
 }

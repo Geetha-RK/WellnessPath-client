@@ -12,7 +12,7 @@ const Speciality = () => {
         {specialityData.map((item,index)=>
           <Link onClick={()=>scrollTo(0,0)} className='speciality__link' key={index} to={`/doctors/${item.speciality}`}>
               <img className='speciality__img' src={item.image} alt={`${item.speciality} image`} />
-              <p>{item.speciality}</p>
+              <p className='speciality__itemname'>{item.speciality}</p>
           </Link>
         )}
       </div>
