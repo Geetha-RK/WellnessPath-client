@@ -19,7 +19,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`flex items-center justify-between text-sm py-4 px-8 lg:px-16 z-10 relative ${getNavbarBgColor()}`}>
+        <nav className={`flex items-center w-full justify-between text-sm py-4 lg:px-16 z-10 relative ${getNavbarBgColor()}`}>
             {/* Logo (hidden on mobile) */}
             <img
                 onClick={() => navigate('/')}

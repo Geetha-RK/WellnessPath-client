@@ -1,0 +1,57 @@
+@use "../../styles/partials/globals" as *;
+.about{
+    background-color: 'bg-purple';
+    width:100%;
+    &__title{
+        margin-left:1rem;
+        @extend %f-body-small;
+        font-weight: 800;
+        color: #370342c9;
+        padding: 1rem;
+        @include tablet{
+            margin-left:4rem;
+            padding-bottom: 2rem;
+            padding-top: 2rem;
+        }
+        @include desktop{
+            margin-top: 2rem;
+            margin-left: 11rem;
+            // @extend %f-body-large;
+        }
+    }
+&__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // width:100%;
+    // @include tablet{
+    //     flex-direction: row;
+    // }
+}
+&__img{
+    width:80%;
+    border-radius: 8px;
+    // margin:1rem;
+    @include desktop{
+       margin-top: 2rem;
+    }
+}
+&__para-container{
+    @extend %f-about-details;
+    padding-top: 1rem;
+    width:80%;
+    color:$c-slate;
+    
+}
+&__para-p1{
+    color: #370342c9;
+    padding-bottom:1rem;
+    padding-top: 1rem;
+    font-weight: 600;
+
+}
+&__list{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+}
