@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from './assets';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [showMenu, setShowMenu] = useState(false);
-    const [token, setToken] = useState(true);
+    const { token, setToken } = useContext(AppContext);
+
+    const logout = () => {
+        setToken(false)
+        localStorage.removeItem('token');
+    }
 
     const getNavbarBgColor = () => {
         if (location.pathname === '/') {
@@ -60,7 +66,7 @@ const Navbar = () => {
                         <div className='min-w-48 bg-graphite rounded flex flex-col gap-4 p-4'>
                                 <p onClick={() => navigate('my-profile')} className='hover:text-black text-white cursor-pointer'>My Profile</p>
                                 <p onClick={() => navigate('my-appointments')} className='hover:text-black  text-white cursor-pointer'>My Appointments</p>
-                                <p onClick={() => setToken(false)} className='hover:text-black  text-white cursor-pointer'>Logout</p>
+                                <p onClick={logout} className='hover:text-black  text-white cursor-pointer'>Logout</p>
                             </div>
                         </div>
                     </div>

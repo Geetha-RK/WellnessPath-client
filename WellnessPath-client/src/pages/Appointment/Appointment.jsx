@@ -7,12 +7,13 @@ import axios from 'axios';
 
 const Appointment = () => {
   const { docId } = useParams();
-  const { getDoctorById, selectedDoctor, loading, error } = useContext(AppContext);
+  const { getDoctorById, selectedDoctor, loading, error, token } = useContext(AppContext);
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const [docSlots, setDocSlots] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [bookedSlots, setBookedSlots] = useState({}); 
+
 
   useEffect(() => {
     const fetchDoctorAndSlots = async () => {
@@ -122,13 +123,15 @@ const Appointment = () => {
       }
   
       const appointmentData = {
-        patientId: 1, 
+        // patientId: 1, 
         doctorId: docId,
         dateTime: selectedDay.toISOString(),
       };
   
       try {
-        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/appointments/`, appointmentData);
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/appointments/`, appointmentData,{
+          headers:{token}
+        });
         if (response.status === 201) {
           alert("Appointment booked successfully!");
           await fetchBookedSlots(); 
