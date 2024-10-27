@@ -237,6 +237,7 @@ const Appointment = () => {
                 <p>No available time slots for this date.</p>
               )}
             </div>
+
           </div>
         )}
       </div>

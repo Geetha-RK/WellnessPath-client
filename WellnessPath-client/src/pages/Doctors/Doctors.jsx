@@ -50,8 +50,8 @@ const Doctors = () => {
                       <div className='topdoctors__text'>
                           <p className='topdoctors__greenbox'></p><p>Available</p>
                       </div>
-                      <p className='topdoctors__name '>{`Dr. ${item.first_name} ${item.last_name}`}</p>
-                      <p className='topdoctors__speciality'>{item.specialization}</p>
+                      <p className='topdoctors__name doctors__name--modifier'>{`Dr. ${item.first_name} ${item.last_name}`}</p>
+                      <p className='topdoctors__speciality doctors__speciality--modifier'>{item.specialization}</p>
                   </div>
               </div>
 

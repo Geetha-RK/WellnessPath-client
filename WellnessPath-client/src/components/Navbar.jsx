@@ -57,7 +57,7 @@ const Navbar = () => {
                         <img className="w-8 h-8 rounded-full object-cover" src={assets.profilepic} alt="User" />
                         <img className="w-2.5 text-white" src={assets.dropdown} alt="Dropdown Icon" />
                         <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-100 hidden group-hover:block'>
-                        <div className='min-w-48 bg-purple rounded flex flex-col gap-4 p-4'>
+                        <div className='min-w-48 bg-graphite rounded flex flex-col gap-4 p-4'>
                                 <p onClick={() => navigate('my-profile')} className='hover:text-black text-white cursor-pointer'>My Profile</p>
                                 <p onClick={() => navigate('my-appointments')} className='hover:text-black  text-white cursor-pointer'>My Appointments</p>
                                 <p onClick={() => setToken(false)} className='hover:text-black  text-white cursor-pointer'>Logout</p>

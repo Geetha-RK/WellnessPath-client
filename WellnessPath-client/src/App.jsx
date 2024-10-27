@@ -8,11 +8,13 @@ import MyProfile from "./pages/MyProfile/MyProfile";
 import MyAppointments from "./pages/MyAppoinments/MyAppointments";
 import Appointment from "./pages/Appointment/Appointment";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer/Footer";
 import "./App.scss";
 
 function App() {
   return (
-      <div className="scrollContainer">
+    <>
+      {/* <div className="scrollContainer"> */}
         <Navbar />
 
         <Routes>
@@ -26,7 +28,10 @@ function App() {
           <Route path="/my-appointments" element={<MyAppointments />} />
           <Route path="/appointments/:docId" element={<Appointment />} />
         </Routes>
-      </div>
+
+        <Footer />
+       {/* </div> */}
+      </>
   );
 }
 

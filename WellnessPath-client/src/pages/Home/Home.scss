@@ -7,9 +7,9 @@
     right: 0;
     bottom: 0; 
     z-index: -1; 
-    overflow: hidden;
-  
+    overflow: hidden; 
 }
+
 .homecontent {
     position: relative;
     padding-top: 2rem;
@@ -29,7 +29,6 @@
     @include desktop{
       padding: 6rem;
     }
-
 
     &::-webkit-scrollbar {
         display: none; 

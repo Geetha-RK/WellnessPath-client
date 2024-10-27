@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .active hr{
     @apply block;
 }
@@ -18,5 +19,8 @@
 }
 .bg-green{
     background-color: #bb53a4;
+}
+.bg-graphite{
+    background-color: #232940;
 }
 

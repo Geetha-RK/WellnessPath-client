@@ -1,0 +1,41 @@
+@use "../../styles/partials/globals" as *;
+
+.footer{
+    @extend %f-about-details;
+    background-color:$c-graphite;
+    padding: 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-top: 1rem;
+    @include tablet{
+        margin-top: 2rem;
+        flex-direction: row;
+    }
+    @include desktop{
+        margin-top: 3rem;
+        flex-direction: row;
+        justify-content:space-around;
+    }
+
+    &__img-container{
+        padding-top: 1rem;
+        width:80%;
+        @include tablet{
+            padding-top: 0;
+            width:20%;
+        }
+        @include desktop{
+            width:8%;
+        }
+    }
+
+    &__para-container{
+        color: white;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
