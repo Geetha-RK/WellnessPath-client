@@ -10,7 +10,7 @@ const MyAppointments = () => {
     const fetchAppointments = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/appointments/my-appointment/${patientId}`
+          `${import.meta.env.VITE_API_URL}/api/appointments/my-appointment/${patientId}`
         );
         setAppointments(response.data);
       } catch (error) {
@@ -24,7 +24,7 @@ const MyAppointments = () => {
   const handleCancel = async (appointmentId) => {
     try {
       await axios.patch(
-        `http://localhost:8080/api/appointments/cancel/${appointmentId}`
+        `${import.meta.env.VITE_API_URL}/api/appointments/cancel/${appointmentId}`
       );
       setAppointments((prevAppointments) =>
         prevAppointments.filter(
@@ -39,7 +39,6 @@ const MyAppointments = () => {
 
   return (
     <>
-      {/* <div className='scrollContainer'> */}
       <div className="bg-parent5"></div>
       <div className="my-appointments">
         {appointments.length > 0 ? (
@@ -82,7 +81,6 @@ const MyAppointments = () => {
           <p>No appointments found.</p>
         )}
       </div>
-      {/* </div> */}
     </>
   );
 };

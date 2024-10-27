@@ -13,7 +13,7 @@ const AppContextProvider = (props) => {
         const doctorList = async () => {
             setLoading(true); 
             try{
-                const response = await axios.get('http://localhost:8080/api/doctors');
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/doctors`);
                 setDoctors(response.data);
             }catch(error){
                 setError(error.response ? error.response.data.message : error.message);
@@ -27,9 +27,8 @@ const AppContextProvider = (props) => {
     const getDoctorById = async (id) => {
         setLoading(true);
         try {
-            const response = await axios.get(`http://localhost:8080/api/doctors/${id}`);
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/doctors/${id}`);
             setSelectedDoctor(response.data);
-            console.log(response.data, "here")
         } catch (error) {
             setError(error.response ? error.response.data.message : error.message);
         } finally {
