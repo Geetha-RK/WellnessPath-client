@@ -12,6 +12,7 @@ const Navbar = () => {
     const logout = () => {
         setToken(false)
         localStorage.removeItem('token');
+        navigate('/login');
     }
 
     const getNavbarBgColor = () => {
@@ -41,6 +42,7 @@ const Navbar = () => {
                 alt="Mobile Logo"
             />
             {/* Tablet and desktop view nav bar (hidden on mobile) */}
+            {token && (
             <ul className='hidden md:flex items-start gap-5 lg:gap-12 font-medium'>
                 <NavLink to='/' activeClassName="text-primary">
                     <li className='py-1 text-base text-white hover:text-primary'>Home</li>
@@ -55,6 +57,7 @@ const Navbar = () => {
                     <li className='py-1 text-base text-white hover:text-primary'>Contact</li>
                 </NavLink>
             </ul>
+            )}
 
             <div className='flex items-center gap-4'>
                 <img onClick={() => setShowMenu(true)} className='w-6 md:hidden cursor-pointer' src={assets.menu_icon} alt="Menu Icon" />
@@ -80,6 +83,7 @@ const Navbar = () => {
                     <div className='flex justify-between items-center p-4'>
                         <img onClick={() => setShowMenu(false)} className='w-6 cursor-pointer' src={assets.cross_icon} alt="Close Icon" />
                     </div>
+                    {token ? (
                     <ul className='flex flex-col items-center mt-8 space-y-4'>
                         <NavLink to='/' onClick={() => { setShowMenu(false); navigate('/'); }} activeClassName="text-primary">
                             <li className='text-white text-lg'>Home</li>
@@ -94,6 +98,11 @@ const Navbar = () => {
                             <li className='text-white text-lg'>Contact</li>
                         </NavLink>
                     </ul>
+                     ) : (
+                        <div className="flex flex-col items-center mt-8">
+                            <button onClick={() => { setShowMenu(false); navigate('/login'); }} className='bg-primary text-white px-8 py-3 rounded-full font-light'>Login</button>
+                        </div>
+                    )}
                 </div>
             )}
         </nav>

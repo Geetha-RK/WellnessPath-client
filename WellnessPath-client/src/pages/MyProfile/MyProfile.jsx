@@ -22,7 +22,7 @@ const MyProfile = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/patients/get-profile`,{headers:{token}}
+        `${import.meta.env.VITE_API_URL}/api/patients/get-profile`,{headers:{token}}
       );
       setPatient(response.data);
       setFormData({
@@ -41,7 +41,7 @@ const MyProfile = () => {
 
   const updatePatient = async (id) => {
     try {
-      await axios.put(`http://localhost:8080/api/patients/update-profile`, formData, {headers:{token}});
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/patients/update-profile`, formData, {headers:{token}});
       setPatient(formData);
       setIsEditing(false);
       toast.success("Edit Successfull");

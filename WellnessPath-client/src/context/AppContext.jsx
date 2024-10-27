@@ -11,7 +11,6 @@ const AppContextProvider = (props) => {
     const [selectedDoctor, setSelectedDoctor] = useState(null);
     const [token,setToken] = useState(localStorage.getItem('token')? localStorage.getItem('token'): false);
 
-    // const [userData, setUserData] = useState(false)
 
     useEffect(()=>{
         const doctorList = async () => {

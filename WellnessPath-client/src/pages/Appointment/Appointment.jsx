@@ -123,7 +123,6 @@ const Appointment = () => {
       }
   
       const appointmentData = {
-        // patientId: 1, 
         doctorId: docId,
         dateTime: selectedDay.toISOString(),
       };

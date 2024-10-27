@@ -5,7 +5,6 @@ import { AppContext } from "../../context/AppContext";
 
 const MyAppointments = () => {
   const [appointments, setAppointments] = useState([]);
-  // const patientId = 1;
   const { token } = useContext(AppContext);
 
   useEffect(() => {
