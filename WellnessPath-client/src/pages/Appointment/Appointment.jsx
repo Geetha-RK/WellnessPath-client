@@ -12,7 +12,7 @@ const Appointment = () => {
   const [docSlots, setDocSlots] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [bookedSlots, setBookedSlots] = useState({}); // Use an object to map dates to booked times
+  const [bookedSlots, setBookedSlots] = useState({}); 
 
   useEffect(() => {
     const fetchDoctorAndSlots = async () => {
@@ -35,7 +35,7 @@ const Appointment = () => {
       const dateString = date.toISOString().split('T')[0];
 
       try {
-        const response = await axios.get(`http://localhost:8080/api/appointments/${docId}/${dateString}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/appointments/${docId}/${dateString}`);
         newBookedSlots[dateString] = response.data; // Store booked times for each date
       } catch (error) {
         console.error("Error fetching booked slots:", error);
@@ -118,20 +118,20 @@ const Appointment = () => {
       const dateString = selectedDay.toISOString().split('T')[0];
       if (bookedSlots[dateString]?.includes(selectedTime)) {
         alert("This time slot is already booked. Please choose another time.");
-        return; // Prevent further execution
+        return; 
       }
   
       const appointmentData = {
-        patientId: 1, // Replace with actual patient ID
+        patientId: 1, 
         doctorId: docId,
         dateTime: selectedDay.toISOString(),
       };
   
       try {
-        const response = await axios.post('http://localhost:8080/api/appointments/', appointmentData);
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/appointments/`, appointmentData);
         if (response.status === 201) {
           alert("Appointment booked successfully!");
-          await fetchBookedSlots(); // Refresh booked slots after booking
+          await fetchBookedSlots(); 
         }
       } catch (error) {
         console.error("Error booking appointment:", error);
@@ -237,6 +237,7 @@ const Appointment = () => {
                 <p>No available time slots for this date.</p>
               )}
             </div>
+
           </div>
         )}
       </div>

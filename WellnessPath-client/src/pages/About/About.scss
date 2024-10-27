@@ -12,7 +12,6 @@
     z-index: -1;
 }
 .about{
-    // background-color: #af49c4;  //this is not setting
     width:100%; 
     &__title{
         margin-left:1rem;
@@ -28,7 +27,6 @@
         @include desktop{
             margin-top: 2rem;
             margin-left: 11rem;
-            // @extend %f-body-large;
         }
     }
 &__container{
