@@ -1,0 +1,57 @@
+@use "../../styles/partials/globals" as *;
+
+.contact{
+    margin-left:1rem;
+    @extend %f-body-small;
+    font-weight: 800;
+    color: #370342c9;
+    padding: 1rem;
+    @include tablet{
+        margin-left:4rem;
+        padding-bottom: 2rem;
+        padding-top: 2rem;
+    }
+    @include desktop{
+        margin-top: 2rem;
+        margin-left: 11rem;
+    }
+    &__container{
+        // margin-left:1rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        @include tablet{
+            margin:0 4rem;
+            padding-bottom: 2rem;
+            padding-top: 2rem;
+        }
+        @include desktop{
+            // margin-top: 2rem;
+            margin-left: 2rem;
+            flex-direction: row;
+        }
+    }
+    &__img-container{
+        @include desktop{
+            width:80%;
+        }
+    }
+    &__img{
+        width:100%;
+        height: 50%;
+        border-radius: 8px;
+    }
+    &__para-container{
+        @extend %f-about-details;
+    }
+    &__para-title{
+        font-weight: 600;
+        color: #370342c9;
+        padding: 0.5rem 0;
+    }
+    &__para-title2{
+        padding-top: 3rem;
+    }
+}

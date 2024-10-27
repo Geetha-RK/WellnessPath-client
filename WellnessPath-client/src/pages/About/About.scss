@@ -35,10 +35,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // width:100%;
-    // @include tablet{
-    //     flex-direction: row;
-    // }
+}
+
+&__img-container{
+    padding-left: 3rem;
+    @include tablet{
+        padding-left: 5rem;
+    }
+    @include desktop{
+        width:80%;
+        padding-left: 6rem;
+    }
 }
 &__img{
     width:80%;
@@ -46,6 +53,7 @@
     // margin:1rem;
     @include desktop{
        margin-top: 2rem;
+    //    height:50%;
     }
 }
 &__para-container{

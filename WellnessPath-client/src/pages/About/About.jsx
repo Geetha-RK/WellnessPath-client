@@ -10,7 +10,9 @@ const About = () => {
         <p>About Us</p>
       </div>
       <div className='about__container'>
-        <img className='about__img' src={assets.docteam2} alt="doctor-team2" />
+        <div className='about__img-container'>
+          <img className='about__img' src={assets.femalehero} alt="doctor-team2" />
+        </div>
         <div className='about__para-container'>
           <p className='about__para-p1'>Welcome to Wellness Path!</p>
           <p>At Wellness Path, we are dedicated to transforming the way healthcare is delivered by providing a comprehensive web application that streamlines hospital operations. Our primary focus is on enhancing patient management, 
