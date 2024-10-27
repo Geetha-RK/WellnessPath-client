@@ -1,16 +1,17 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./MyAppointments.scss";
+import { AppContext } from "../../context/AppContext";
 
 const MyAppointments = () => {
   const [appointments, setAppointments] = useState([]);
-  const patientId = 1;
+  const { token } = useContext(AppContext);
 
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/appointments/my-appointment/${patientId}`
+          `${import.meta.env.VITE_API_URL}/api/appointments/my-appointment/`,{headers:{token}}
         );
         setAppointments(response.data);
       } catch (error) {
@@ -19,12 +20,14 @@ const MyAppointments = () => {
     };
 
     fetchAppointments();
-  }, [patientId]);
+  }, [token]);
 
   const handleCancel = async (appointmentId) => {
     try {
       await axios.patch(
-        `${import.meta.env.VITE_API_URL}/api/appointments/cancel/${appointmentId}`
+        `${import.meta.env.VITE_API_URL}/api/appointments/cancel/${appointmentId}`,
+        {}, 
+        { headers: { token } }
       );
       setAppointments((prevAppointments) =>
         prevAppointments.filter(

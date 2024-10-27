@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./MyProfile.scss";
+import { AppContext } from "../../context/AppContext";
+import { toast } from "react-toastify";
 
 const MyProfile = () => {
   const [loading, setLoading] = useState(true);
   const [patient, setPatient] = useState(null);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const { token, setToken } = useContext(AppContext);
+
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -18,7 +22,7 @@ const MyProfile = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/patients/${id}`
+        `${import.meta.env.VITE_API_URL}/api/patients/get-profile`,{headers:{token}}
       );
       setPatient(response.data);
       setFormData({
@@ -29,6 +33,7 @@ const MyProfile = () => {
       });
     } catch (error) {
       setError(error.response ? error.response.data.message : error.message);
+      toast.error(error.message)
     } finally {
       setLoading(false);
     }
@@ -36,16 +41,18 @@ const MyProfile = () => {
 
   const updatePatient = async (id) => {
     try {
-      await axios.put(`http://localhost:8080/api/patients/${id}`, formData);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/patients/update-profile`, formData, {headers:{token}});
       setPatient(formData);
       setIsEditing(false);
+      toast.success("Edit Successfull");
     } catch (error) {
       setError(error.response ? error.response.data.message : error.message);
+      toast.error(error.message)
     }
   };
 
   useEffect(() => {
-    getPatientById(1);
+    getPatientById();
   }, []);
 
   if (loading) return <p>Loading...</p>;
