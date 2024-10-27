@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.active hr{
+    @apply block;
+}
+
+::-webkit-scrollbar{
+    @apply hidden;
+}
+
+.bg-main{ 
+    background-color: rgb(5, 3, 105);
+}
+.bg-purple{
+    background-color: rgb(123, 74, 213);
+}
+.bg-green{
+    background-color: #bb53a4;
+}
+.bg-graphite{
+    background-color: #232940;
+}
+

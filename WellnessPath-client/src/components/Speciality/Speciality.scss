@@ -1,0 +1,66 @@
+@use "../../styles/partials/globals" as *;
+
+.speciality{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    color:white;
+
+    @include tablet{
+        padding-top: 8rem;
+    }
+
+    &__heading{
+        @extend %f-body-medium;
+        text-align: center;
+        @include tablet{
+
+        }
+    }
+    &__para{
+        font-size: 1.5rem; 
+        line-height: 1.25rem ;
+        text-align:center;
+        width: 85%;
+
+        @include tablet{
+            width:30%;
+        }
+        
+    }
+    &__item{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding-top: 1.5rem;
+        width: 100%;
+        overflow:scroll;
+    }
+    &__img{
+        width:4rem;
+        margin-bottom: 0.5rem;
+        @include tablet{
+            width:6rem;
+            
+        }
+    }
+    &__link{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: x-small;
+        cursor: pointer;
+        flex-shrink: 0;
+        &:hover {
+            transform: translateY(-10px);
+            transition: all 0.5s;
+          }
+    }
+    &__itemname{
+       @extend %f-body-small;
+    }
+}

@@ -1,0 +1,240 @@
+@use "../../styles/partials/globals" as *;
+.bg-image3{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    top: 0;
+    opacity:70%;
+    background-image: url("../../assets/bg-3.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+    z-index: -1;
+}
+.appointments{
+    display: flex;
+    flex-direction: column;
+    @include tablet{
+        flex-direction: row;
+    }
+    @include desktop{
+        margin: 0 108px;
+    }
+    &__heading{
+        margin:1rem;
+        @extend %f-body-small;
+        font-weight: 600;
+        color: #370342c9;
+        @include desktop{
+            margin: 32px;
+            margin-left: 108px;
+            padding-left: 1rem;
+        }
+    }
+    &__img-container{
+        margin:1rem;
+        height:300px;
+        border-radius: 5px;
+    }
+    &__img{
+        width:100%;
+       
+        height:300px;
+        border-radius: 8px;
+        @include tablet{
+            max-width: 18rem
+        }
+    }
+    &__details-container{
+        opacity: 80%;
+        padding: 0.5rem;
+        margin: 1rem;
+        background-color: #bb53a4c9;
+        border-radius: 8px;
+        @extend %f-about-details;
+        line-height: 25px;
+        font-weight: 600;
+        color: #370342c9;
+        width: 18.125rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        @include tablet{
+            width:32rem;
+           
+        }
+        @include desktop{
+            width:80%;
+            padding: 2rem;
+        }
+    }
+    &__details{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    &__docname{
+        display: inline;
+        margin-right: 1rem;
+        font-weight: 900;
+        font-size: 24px;
+        
+    }
+    &__icon1{
+        display: inline;
+        margin-left: 1rem;
+
+    }
+    &__about{
+        text-align:left;
+        
+    }
+    &__abouttitle{
+        display: inline;
+        margin-right: 1rem;
+    }
+    &__abouticon{
+        display: inline;
+        margin-left: 1rem;
+    }
+    &__span{
+        font-weight: 800;
+    }
+
+    
+}
+.availability{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__title{
+        margin:2rem;
+        font-weight: 600;
+        color: #370342c9;
+        
+        @include desktop{
+            margin: 32px;
+            margin-left: 108px;
+            padding-left: 1rem;
+        }
+    }
+
+    &__booking-wrapper{
+        display: flex;
+        justify-content: center;
+        overflow: auto;
+            @include tablet{
+                width:70%;
+                margin:0 10rem;
+            }
+            @include desktop{
+                margin-left:20rem;
+            }
+    }
+
+    &__booking-date{
+        display: flex;
+        align-items: unset;
+        justify-content: unset;
+        flex-direction: row;
+        gap:6px;
+        transition: all .4s linear;
+        transform: translateX(0%);
+        width:100%;
+        margin-bottom:3rem;
+    }
+   
+
+    &__slot{
+        opacity: 80%;
+        background-color: rgba(187, 83, 164, 0.7882352941);
+        color: rgba(55, 3, 66, 0.7882352941);
+        font-weight: 600;
+        border:1px solid rgba(55, 3, 66, 0.7882352941);
+        padding: 8px 12px;
+        flex-grow: 1;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+        border-radius: 8px;
+        width:3rem;
+    }
+
+    
+    &__timeslots{
+        opacity: 80%;
+        background-color: rgba(198, 132, 184, 0.788);
+        color: rgba(55, 3, 66, 0.7882352941);
+        font-weight: 600;
+        border:1px solid rgba(55, 3, 66, 0.7882352941);
+        width:7rem;
+    }
+
+}
+.selected{
+    background-color: rgba(55, 3, 66, 0.7882352941); 
+    color: white; 
+    border: 1px solid rgba(55, 3, 66, 0.7882352941);
+}
+.selected-slots{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 8px;
+        min-height: 44px;
+        overflow: auto hidden;
+
+        &__time{
+            background: #ddf1f8;
+            color: #106c89;
+            border: 1px solid #106c89;
+        }
+
+        &__box{
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+}
+
+.availability__slot.disabled {
+    background-color: #f0f0f0; 
+    color: #ccc;
+    pointer-events: none; 
+  }
+.appointment{
+    display: flex;                  
+    justify-content: center;       
+    align-items: center;
+    
+    &__button{
+        @extend %f-button;
+        margin-top:30px;
+        width:13rem;
+        height:3rem;
+        
+        
+        text-transform: capitalize;
+        border-radius:30px;
+        border:5px solid  rgba(55, 3, 66, 0.7882352941); 
+        color: rgba(55, 3, 66, 0.7882352941); 
+        
+        background:transparent;
+        box-shadow: inset 0 0 0 0 rgba(55, 3, 66, 0.7882352941); 
+        cursor: pointer;
+        transition: ease 2s;
+        outline: none;
+  
+        &:hover{
+          box-shadow: inset 28rem 0 0 0 rgba(55, 3, 66, 0.7882352941); 
+          cursor: pointer;
+          color: white;
+          border:5px solid rgba(55, 3, 66, 0.7882352941); 
+        }
+      }
+}

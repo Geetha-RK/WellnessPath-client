@@ -16,7 +16,8 @@ The primary user of this application is the Patient.
 Patients can:
     -Schedule and cancel appointments.
     -Choose doctors based on their specialties.
-    -View their health reports.
+    - Visit patients profile and edit their information
+    - View patients upcoming appointments.
 
 Special considerations include ensuring data privacy and compliance with HIPAA healthcare regulations.
 
@@ -35,17 +36,24 @@ Special considerations include ensuring data privacy and compliance with HIPAA h
 - React
 - JavaScript
 - Tailwind CSS
+- SaSS, BEM
 - MySQL
 - Express
 - Client libraries: 
     - react
-    - react-router
     - axios
+    - react-toastify
+    - dotenv
+    - react-dom
+    - react-router-dom 
+   
 - Server libraries:
     - knex
     - express
-    - OAuth 2.0 for authorization, allowing users to grant access to their data.
-    - JWT for authentication, maintaining user sessions securely.
+    - express-validator
+    - mysql2
+    - cors
+    - JWT for authentication and authorization, maintaining user sessions securely and allowing users to grant access to their data.
 
 ### APIs
 
@@ -58,208 +66,182 @@ Special considerations include ensuring data privacy and compliance with HIPAA h
 - **DoctorsbyCategory:** Gives the list of doctors for each category. User Profile: *Patient*
 - **DoctorsbyID:** Gives the details of the doctor and available time for appoinment booking. User profile: *Patient*
 - **Appointment Management:** Lists booked appointments and allows cancellations.
-- **Health Reports:** Displays patient health reports.
 
 
 ### Mockups
 
 #### Home Page
-![](HomePage.png)
+![](./Documents/HomePage.png)
 
 #### Login Page
-![](Login.png)
+![](./Documents/Login.png)
 
 #### DoctorsbyCategory
-![](PatientUser-DoctorsbyCategory.png)
+![](./Documents/PatientUser-DoctorsbyCategory.png)
 
 #### DoctorsbyID
-![](PatientUser-DoctorsbyID.png)
-
-#### DoctorsAppointment
-![](DoctorUser-DoctorsAppointment.png)
+![](./Documents/PatientUser-DoctorsbyID.png)
 
 #### Appointment Management
-![](Patients-Appointments.png)
+![](./Documents/Patients-Appointments.png)
 
-#### Health Reports
-![](Patients-Report.png)
 
 #### Data
-![](DBSchema.PNG)
+![](./Documents/DBSchemaLatest.PNG)
 
 ### Endpoints
 
 List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
 
 **1. User Endpoints :**
-**-POST /api/users** - Description: Create a new user(patient).
+**-POST /api/patients/register** - Description: Create a new user(patient).
 
 Request Body:
 ```
 [
-    { 
-        "username": "john_doe",
-        "password": "securepassword",
-        "role": "patient"
-    },
+    {
+    "first_name": "John",
+    "last_name": "Doe",
+    "phone_number": "1234567890",
+    "email": "john.doe@example.com",
+    "password": "securepassword"
+  }
     ...
 ]
 ```
 Response:
 ```
     {
-  "user_id": 1,
-  "username": "john_doe",
-  "role": "patient",
-  "created_at": "2024-10-15T12:00:00Z",
-  "updated_at": "2024-10-15T12:00:00Z"
+  {
+    "success": true,
+    "message": "User registered successfully",
+    "token": "your_jwt_token_here"
+}
     }
 ```
-**-GET /api/users** -Description: Retrieve a list of users.
+**-POST - /api/patients/login** - Description :  Log in an existing user (patient).
+Request
+```
+{
+    "email": "john.doe@example.com",
+    "password": "securepassword"
+}
+```
 Response
 ```
-[
-  {
-    "user_id": 1,
-    "username": "john_doe",
-    "role": "patient",
-    "created_at": "2024-10-15T12:00:00Z",
-    "updated_at": "2024-10-15T12:00:00Z"
-  },
-  {
-    "user_id": 2,
-    "username": "jane_admin",
-    "role": "admin",
-    "created_at": "2024-10-15T12:00:00Z",
-    "updated_at": "2024-10-15T12:00:00Z"
-  }
-]
+{
+    "success": true,
+    "message": "Login successful",
+    "token": "your_jwt_token_here"
+}
 ```
-**GET /api/users/** -Description: Retrieve a specific user by ID.
+
+**GET /api/patients/get-profile** -Description: Retrieve the profile of the logged-in user.
+Header:
+```
+Header: your_jwt_token_here
+```
 
 Response
 ```
 {
-  "user_id": 1,
-  "username": "john_doe",
-  "role": "patient",
-  "created_at": "2024-10-15T12:00:00Z",
-  "updated_at": "2024-10-15T12:00:00Z"
+    "id": 1,
+    "first_name": "John",
+    "last_name": "Doe",
+    "phone_number": "1234567890",
+    "email": "john.doe@example.com"
 }
 ```
-**PUT /api/users/** - Description: Update a specific user.
+**PUT /api/patients/update-profile** - Description: Update the profile of the logged-in user.
+Header:
+```
+Header: your_jwt_token_here
+```
 Request
 ```
 {
-  "username": "john_doe_updated",
-  "role": "patient"
+    "first_name": "John",
+    "last_name": "Doe",
+    "phone_number": "0987654321",
+    "email": "john.doe@example.com"
 }
 ```
 Response
 ```
 {
-  "user_id": 1,
-  "username": "john_doe_updated",
-  "role": "patient",
-  "created_at": "2024-10-15T12:00:00Z",
-  "updated_at": "2024-10-16T12:00:00Z"
+    "message": "Patient updated successfully"
 }
 ```
-**DELETE /api/users/** - Description: Delete a specific user.
-Response
-```
-{
-  "message": "User deleted successfully."
-}
-```
+
 
 **2. Appointment Endpoints**
 **POST /api/appointments** -Description: Schedule a new appointment.
 Request
 ```
 {
-  "patient_id": 1,
-  "doctor_id": 2,
-  "appointment_date": "2024-10-20T10:00:00Z",
-  "status": "scheduled"
+ {
+    "patientId": 1,
+    "doctorId": 1,
+    "dateTime": "2024-10-20T10:00:00"
+}
 }
 ```
 Response
 ```
 {
-  "appointment_id": 1,
-  "patient_id": 1,
-  "doctor_id": 2,
-  "appointment_date": "2024-10-20T10:00:00Z",
-  "status": "scheduled",
-  "created_at": "2024-10-15T12:00:00Z",
-  "updated_at": "2024-10-15T12:00:00Z"
+ "message": "Appointment created successfully."
 }
 ```
-**GET /api/appointments** - Description: Retrieve a list of appointments.
+**GET /api/appointments/my-appointment** - Description:  Retrieve all appointments for the authenticated patient.
 Response
 ```
 [
-  {
-    "appointment_id": 1,
-    "patient_id": 1,
-    "doctor_id": 2,
-    "appointment_date": "2024-10-20T10:00:00Z",
-    "status": "scheduled",
-    "created_at": "2024-10-15T12:00:00Z",
-    "updated_at": "2024-10-15T12:00:00Z"
-  },
-  {
-    "appointment_id": 2,
-    "patient_id": 1,
-    "doctor_id": 3,
-    "appointment_date": "2024-10-21T11:00:00Z",
-    "status": "scheduled",
-    "created_at": "2024-10-16T12:00:00Z",
-    "updated_at": "2024-10-16T12:00:00Z"
-  }
+    {
+        "image": "doctor_image_url",
+        "specialization": "Cardiology",
+        "appointment_date": "2024-10-20T10:00:00",
+        "doctor_name": "Dr. Smith",
+        "status": "scheduled",
+        "id": 1
+    },
+    {
+        "image": "doctor_image_url",
+        "specialization": "Neurology",
+        "appointment_date": "2024-10-22T09:00:00",
+        "doctor_name": "Dr. Johnson",
+        "status": "scheduled",
+        "id": 2
+    }
 ]
 ```
-**GET /api/appointments/** - Description: Retrieve a specific appointment by ID.
-Response
-```
-{
-  "appointment_id": 1,
-  "patient_id": 1,
-  "doctor_id": 2,
-  "appointment_date": "2024-10-20T10:00:00Z",
-  "status": "scheduled",
-  "created_at": "2024-10-15T12:00:00Z",
-  "updated_at": "2024-10-15T12:00:00Z"
-}
-```
-**PUT /api/appointments/**  - Description: Update a specific appointment.
-Request
-```
-{
-  "status": "completed"
-}
-```
-Response
-```
-{
-  "appointment_id": 1,
-  "status": "completed",
-  "updated_at": "2024-10-16T12:00:00Z"
-}
-```
-**DELETE /api/appointments/** - Description: Delete a specific appointment.
-Response
-```
-{
-  "message": "Appointment deleted successfully."
-}
-```
+**GET /api/appointments/:doctorId/:date** - Description: Retrieve booked appointment times for a specific doctor on a specific date.
+Request Parameters:
 
+  doctorId: ID of the doctor.
+  date: The date for which to retrieve appointments (format: YYYY-MM-DD).
+
+Response
+```
+[
+    "10:00 AM",
+    "11:00 AM"
+]
+```
+**PATCH /api/appointments/cancel/:appointmentId**  - Description: Cancel a specific appointment by ID.
+Request Parameters:
+
+appointmentId: ID of the appointment to be canceled.
+
+Response
+```
+{
+    "message": "Appointment canceled successfully."
+}
+```
 
 **3.Doctor Endpoints**
 
-**GET /api/doctors** - Description: Retrieve a list of doctors.
+**GET /api/doctors** - Description: Retrieve a list of all doctors.
 Response
 ```
 [
@@ -287,7 +269,7 @@ Response
   }
 ]
 ```
-**GET /api/doctors/** - Description: Retrieve a specific doctor by ID.
+**GET /api/doctors/:docId** - Description: Retrieve a specific doctor by ID.
 Response
 ```
 {
@@ -302,93 +284,22 @@ Response
   "updated_at": "2024-10-15T12:00:00Z"
 }
 ```
-
-**4. Health Report Endpoints** 
-**GET /api/reports** - Description: Retrieve a list of health reports for the patient.
+**GET /api/doctors/specialization/:specialization** -Description : Retrieve a list of doctors who specialize in a specific field.
+Request Paramerters:
+  Specialization
 Response
 ```
 [
-  {
-    "report_id": 1,
-    "patient_id": 1,
-    "report_date": "2024-10-10",
-    "description": "Routine health check-up.",
-    "results": "All values within normal range.",
-    "created_at": "2024-10-10T12:00:00Z",
-    "updated_at": "2024-10-10T12:00:00Z"
-  },
-  {
-    "report_id": 2,
-    "patient_id": 1,
-    "report_date": "2024-10-12",
-    "description": "Blood test results.",
-    "results": "Iron levels slightly low.",
-    "created_at": "2024-10-12T12:00:00Z",
-    "updated_at": "2024-10-12T12:00:00Z"
-  }
+    {
+        "doctor_id": 1,
+        "name": "Dr. Smith",
+        "specialization": "Cardiology",
+        "phone": "123-456-7890",
+        "email": "dr.smith@example.com"
+    }
 ]
 ```
-**GET /api/reports/** - Description: Retrieve a specific health report by ID.
-Response
-```
-{
-  "report_id": 1,
-  "patient_id": 1,
-  "report_date": "2024-10-10",
-  "description": "Routine health check-up.",
-  "results": "All values within normal range.",
-  "created_at": "2024-10-10T12:00:00Z",
-  "updated_at": "2024-10-10T12:00:00Z"
-}
-```
 
-**Department Endpoints**
-
-**GET /api/departments** - Description: Retrieve a list of departments.
-Response:
-```
-[
-  {
-    "department_id": 1,
-    "name": "Cardiology",
-    "description": "Heart and blood vessel specialists.",
-    "created_at": "2024-10-15T12:00:00Z",
-    "updated_at": "2024-10-15T12:00:00Z"
-  },
-  {
-    "department_id": 2,
-    "name": "Dermatology",
-    "description": "Skin specialists.",
-    "created_at": "2024-10-15T12:00:00Z",
-    "updated_at": "2024-10-15T12:00:00Z"
-  }
-]
-```
-**GET /api/departments/** - Description: Retrieve a specific department by ID.
-Response:
-```
-{
-  "department_id": 1,
-  "department_name": "Cardiology",
-  "description": "Heart-related treatments and care.",
-  "created_at": "2024-10-15T12:00:00Z",
-  "updated_at": "2024-10-15T12:00:00Z"
-}
-```
-
-
-**8.Doctor-Department Link Endpoints**
-
-**GET /api/doctor_department** - Description: Retrieve a list of doctor-department links.
-Response
-```
-[
-  {
-    "doctor_id": 1,
-    "department_id": 1
-  }
-]
-```
 
 ## Roadmap
 
@@ -424,7 +335,7 @@ Response
 
 -Week 2: Appointment Scheduling and Finalization
     
-    -Day 8-9: Appointment Scheduling
+    -Day 8-10: Appointment Scheduling
 
         Feature: Schedule Appointments
             -Implement functionality for patients to schedule appointments.
@@ -433,12 +344,6 @@ Response
         Feature: View Appointments
             -Implement functionality for users to view their appointments.
             -Create GET /api/appointments endpoint to retrieve appointments.
-
-    -Day 10: Health Reports Access
-
-        Feature: Health Reports
-            -Implement functionality for patients to view their health reports.
-            -Create GET /api/reports endpoint for retrieving reports.
 
     -Day 11: UI Enhancements
 
