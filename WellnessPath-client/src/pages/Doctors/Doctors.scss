@@ -11,14 +11,23 @@
     background-size: cover;
     z-index: -1;
 }
+.doctorsdiv{
+    height: 100%;
+
+}
 .doctors{
     &__header{
-        margin:1rem 2rem;
+        padding-top: 6rem;
+        margin:0 2rem;  //changed here
         color:rgb(123, 74, 213);
         @extend %f-body-medium;
         font-weight: 800;
         text-align: center;
+        @include tablet{
+            padding-top: 2rem;
+        }
         @include desktop{
+        padding-top: 3rem;
             text-align: left;
             margin-left: 4rem;
         }

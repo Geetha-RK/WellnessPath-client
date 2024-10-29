@@ -1,2 +1,13 @@
 @use "./styles/partials/globals" as *;
 
+.Header{
+    position: fixed;
+    width:100%;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    padding-top: 5.5rem;
+}
