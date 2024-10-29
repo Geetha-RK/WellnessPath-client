@@ -15,8 +15,10 @@ function App() {
   return (
     <>
       {/* <div className="scrollContainer"> */}
+      <div className="Header">
         <Navbar />
-
+        </div>
+        <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/doctors" element={<Doctors />} />
@@ -28,8 +30,10 @@ function App() {
           <Route path="/my-appointments" element={<MyAppointments />} />
           <Route path="/appointments/:docId" element={<Appointment />} />
         </Routes>
-
-        <Footer />
+        </div>
+        <div className="Footer">
+          <Footer />
+        </div>
        {/* </div> */}
       </>
   );

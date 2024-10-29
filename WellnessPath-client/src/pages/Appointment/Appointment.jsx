@@ -4,6 +4,7 @@ import { AppContext } from "../../context/AppContext";
 import { assets } from "../../components/assets";
 import "./Appointment.scss";
 import axios from 'axios';
+import { toast } from "react-toastify";
 
 const Appointment = () => {
   const { docId } = useParams();
@@ -133,6 +134,7 @@ const Appointment = () => {
         });
         if (response.status === 201) {
           alert("Appointment booked successfully!");
+          toast.success("Appointment booked successfully");
           await fetchBookedSlots(); 
         }
       } catch (error) {

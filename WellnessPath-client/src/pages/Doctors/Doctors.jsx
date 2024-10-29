@@ -29,7 +29,7 @@ const Doctors = () => {
     },[doctors,specialization])
 
   return (
-          <>
+          <div className='doctorsdiv'>
           <div className='bg-image'></div>
         <p className='doctors__header'>Find your perfect Doctor based on Specialization</p>
     <div className='doctors__container1'>
@@ -59,8 +59,8 @@ const Doctors = () => {
           }
         </div>
     </div>
-    
-    </>
+    </div>
+    // </>
   )
 }
 

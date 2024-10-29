@@ -2,19 +2,19 @@
 
 .footer{
     @extend %f-about-details;
-    background-color:$c-graphite;
+    background-color:#35024a;
     padding: 1rem 1rem;
     display: flex;
     justify-content: space-between;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    margin-top: 1rem;
+    padding-top: 1rem;
     @include tablet{
-        margin-top: 2rem;
+        padding-top: 2rem;
         flex-direction: row;
     }
     @include desktop{
-        margin-top: 3rem;
+        padding-top: 3rem;
         flex-direction: row;
         justify-content:space-around;
     }
