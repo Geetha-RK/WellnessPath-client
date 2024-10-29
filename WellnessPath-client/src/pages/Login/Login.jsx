@@ -130,7 +130,7 @@ const Login = () => {
               value={password}
               required
             />
-            <button type='button' onClick={() => setShowPassword(!showPassword)}>
+            <button className='loginform__show' type='button' onClick={() => setShowPassword(!showPassword)}>
               {showPassword ? 'Hide' : 'Show'}
             </button>
           </div>
@@ -147,8 +147,8 @@ const Login = () => {
               </p>
             ) : (
               <p>
-                Don't have an account?{' '}
-                <button className='loginform__link' type='button' onClick={() => setState('Sign Up')}>Sign Up Here</button>
+                Not Registered?{' '}
+                <button className='loginform__link' type='button' onClick={() => setState('Sign Up')}>Create Account</button>
               </p>
             )}
           </div>
