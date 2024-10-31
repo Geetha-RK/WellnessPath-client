@@ -45,7 +45,7 @@ const Doctors = () => {
           {
             filterDoc.map((item,index)=>(
               <div onClick={()=>navigate(`/appointments/${item.doctor_id}`)} className='topdoctors__box doctors__box2' key={index}>
-                  <img className='topdoctors__doctorimg doctors__img' src={item.image} alt="doc-image" />
+                  <img className='topdoctors__doctorimg doctors__img' src={`${import.meta.env.VITE_API_URL}${item.image}`} alt="doc-image" />
                   <div className='topdoctors__container2'>
                       <div className='topdoctors__text'>
                           <p className='topdoctors__greenbox'></p><p>Available</p>

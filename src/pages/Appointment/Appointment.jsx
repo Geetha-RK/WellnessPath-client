@@ -157,7 +157,7 @@ const Appointment = () => {
         <div className="appointments__img-container">
           <img
             className="appointments__img"
-            src={selectedDoctor.image}
+            src={`${import.meta.env.VITE_API_URL}${selectedDoctor.image}`}
             alt={`${selectedDoctor.first_name} image`}
           />
         </div>

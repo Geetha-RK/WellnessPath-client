@@ -43,7 +43,7 @@ const TopDoctors = () => {
         <div className='topdoctors__container'>
             {doctors.slice(0,10).map((item,index)=>(
                 <div onClick={()=>navigate(`/appointments/${item.doctor_id}`)} className='topdoctors__box' key={index}>
-                    <img className='topdoctors__doctorimg' src={item.image} alt="doc-image" />
+                    <img className='topdoctors__doctorimg' src={`${import.meta.env.VITE_API_URL}${item.image}`} alt="doc-image" />
                     <div className='topdoctors__container2'>
                         <div className='topdoctors__text'>
                             <p className='topdoctors__greenbox'></p><p>Available</p>

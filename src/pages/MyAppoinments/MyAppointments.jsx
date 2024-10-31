@@ -49,7 +49,7 @@ const MyAppointments = () => {
             {appointments.map((appointment, index) => (
               <li key={index} className="my-appointments__item">
                 <img
-                  src={appointment.image}
+                  src={`${import.meta.env.VITE_API_URL}${appointment.image}`}
                   alt="Doctor"
                   className="my-appointments__image"
                 />
