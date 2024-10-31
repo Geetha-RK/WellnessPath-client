@@ -10,10 +10,11 @@ const AppContextProvider = (props) => {
     const [error, setError] = useState(null);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
     const [token,setToken] = useState(localStorage.getItem('token')? localStorage.getItem('token'): false);
-
+    
 
     useEffect(()=>{
         const doctorList = async () => {
+
             setLoading(true); 
             try{
                 const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/doctors`);
